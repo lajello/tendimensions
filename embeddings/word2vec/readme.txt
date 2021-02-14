@@ -1,0 +1,1 @@
+paste in this directory the word2vec embeddings: GoogleNews-vectors-negative300.wv
