@@ -14,7 +14,7 @@ Decades of social science research identified ten fundamental dimensions that pr
 - <b>Fun</b>: Experiencing leisure, laughter, and joy
 - <b>Conflict</b>: Contrast or diverging views
 
-These dimensions are commonly expressed in language. For example "we all congratulate her on her wonderful accomplishment during this last year" is an expression of status giving, and "if you need any help, you know, back up, call me" is an expression of support. After annotating conversational text with these ten labels through crowdsourcing, we trained an LSTM tool to detect the presence of these types of interactions from conversations (or any piece of text, really).
+These dimensions are commonly expressed in language. For example "we all congratulate her on her wonderful accomplishment during this last year" is an expression of status giving, and "if you need any help call me" is an expression of support. After annotating conversational text with these ten labels through crowdsourcing, we trained an LSTM tool to detect the presence of these types of interactions from conversations (or any piece of text, really).
 
 <h3>References</h3>
 
@@ -51,8 +51,8 @@ import tendims
 model = tendims.TenDimensionsClassifier(is_cuda=True, embeddings_dir = './embeddings') #set to False is GPU not available. Customize embeddings directory if needed
 dimensions = model.dimensions_list #get the list of all available dimensions
 print(dimensions)
-text = 'I love you so much, I am in love with you. Fuck you very much.'
-dimension = ''
+text = 'Hello, my name is Mike. I am willing to help you, whatever you need.'
+dimension = 'support'
 model.compute_score_split(text, dimension) #compute a score for each sentence and returns maximum and average values
 model.compute_score(text, dimension) #compute a single score on the whole text
 ```
