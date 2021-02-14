@@ -26,7 +26,7 @@ If you use our code in your project, please cite our research papers:
 
 <h4>1. Clone the repository</h4>
 
-<code></code>
+<code>git clone https://github.com/lajello/tendimensions.git</code>
 
 <h4>2. Install the dependencies</h4>
 
