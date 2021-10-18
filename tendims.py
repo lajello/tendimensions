@@ -9,6 +9,7 @@ from nltk.tokenize import TweetTokenizer
 tokenize = TweetTokenizer().tokenize
 from nltk import sent_tokenize
 
+nltk.download('punkt')
 
 class TenDimensionsClassifier:
 	def __init__(self, models_dir = './models/lstm_trained_models', 
