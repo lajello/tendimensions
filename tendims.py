@@ -11,6 +11,8 @@ tokenize = TweetTokenizer().tokenize
 from nltk import sent_tokenize
 nltk.download('punkt')
 
+dimensions_list = ['support', 'knowledge', 'conflict', 'power', 'similarity', 'fun', 'status', 'trust', 'identity', 'romance']
+
 class TenDimensionsClassifier:
 	def __init__(self, models_dir = './models/lstm_trained_models', 
 		embeddings_dir = './embeddings', is_cuda=False):
@@ -129,7 +131,8 @@ class TenDimensionsClassifier:
 					sentences = [text]
 
 				for sent in sentences:
-					if len(sent) >= min_tokens:
+					sent = str(sent)
+					if sent is not None and sent != '' and sent != 'nan' and len(sent.split()) >= min_tokens:
 						try:
 							score = self.compute_score(sent, dim)
 							if score is not None:
