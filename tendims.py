@@ -115,8 +115,8 @@ class TenDimensionsClassifier:
 		@param dimensions: a string representing the dimension or a list of strings for 
 		                   multiple dimensions. None triggers the computation of all dimensions
 		       min_tokens: the minimum number of tokens in a sentence for the dimension to be computed
-		@return a pair of (avg, max) confidence scores for the selected dimension
-		        a dictionary dimension:(avg, max) is returned if multiple dimensions were specified
+		@return a tuple (avg, max, min, std) of confidence scores for the selected dimension
+		        a dictionary dimension:(avg, max, min, std) is returned if multiple dimensions were specified
 		        None (or dimension:None) is returned when the dimension could not be computed
 		"""
 		dimension_scores = {d:(None,None) for d in self._parse_input_dimensions(dimensions)}
@@ -137,7 +137,7 @@ class TenDimensionsClassifier:
 						except:
 							pass
 				if scores:
-					dimension_scores[dim] = (np.mean(scores), np.max(scores))
+					dimension_scores[dim] = (np.mean(scores), np.max(scores), np.min(scores), np.std(scores))
 				else:
 					dimension_scores[dim] = (None, None)
 		if len(dimension_scores) == 1:
