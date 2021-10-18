@@ -20,7 +20,7 @@ These dimensions are commonly expressed in language. For example "we all congrat
 
 If you use our code in your project, please cite our research papers:
 - <b>[CITATION]</b> M. Choi, L.M. Aiello, K.Z. Varga, D. Quercia "Ten Social Dimensions of Conversations and Relationships". The Web Conference, 2020
-- <b>[CITATION]</b> S. Deri, J. Rappaz, L. M. Aiello, D. Quercia "Coloring in the Links: Capturing Social Ties As They Are Perceived". ACM CSCW, 2018
+- <b>[CITATION]</b> S. Deri, J. Rappaz, L.M. Aiello, D. Quercia "Coloring in the Links: Capturing Social Ties As They Are Perceived". ACM CSCW, 2018
 
 <h3>Setup</h3>
 
