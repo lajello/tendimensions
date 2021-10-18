@@ -5,10 +5,10 @@ from os.path import join
 from features.embedding_features import ExtractWordEmbeddings
 from models.lstm import LSTMClassifier
 import torch
+import nltk
 from nltk.tokenize import TweetTokenizer
 tokenize = TweetTokenizer().tokenize
 from nltk import sent_tokenize
-
 nltk.download('punkt')
 
 class TenDimensionsClassifier:
