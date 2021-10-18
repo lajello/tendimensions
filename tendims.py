@@ -139,7 +139,7 @@ class TenDimensionsClassifier:
 				if scores:
 					dimension_scores[dim] = (np.mean(scores), np.max(scores), np.min(scores), np.std(scores))
 				else:
-					dimension_scores[dim] = (None, None)
+					dimension_scores[dim] = (None, None, None, None)
 		if len(dimension_scores) == 1:
 			return list(dimension_scores.values())[0]
 		else:
