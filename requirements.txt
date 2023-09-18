@@ -2,4 +2,4 @@ numpy
 nltk
 torch
 gensim==3.8.3
-sklearn
+scikit-learn
