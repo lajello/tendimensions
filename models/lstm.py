@@ -1,7 +1,9 @@
-import torch
-from torch import nn
-import torch.nn.functional as F
 import os
+
+import torch
+import torch.nn.functional as F
+from torch import nn
+
 
 class LSTMClassifier(nn.Module):
     def __init__(self, embedding_dim, hidden_dim):
@@ -10,8 +12,8 @@ class LSTMClassifier(nn.Module):
         self.hidden_dim = hidden_dim
         self.embedding_dim = embedding_dim
 
-        self.lstm = nn.LSTM(embedding_dim, hidden_dim,batch_first=True)
-        self.W_out = nn.Linear(hidden_dim,1)
+        self.lstm = nn.LSTM(embedding_dim, hidden_dim, batch_first=True)
+        self.W_out = nn.Linear(hidden_dim, 1)
 
     def forward(self, batch):
         """
@@ -19,9 +21,9 @@ class LSTMClassifier(nn.Module):
         :param batch of size [b @ (seq x dim)]
         :return: array of size [b]
         """
-        lengths = (batch!=0).sum(1)[:,0] # lengths of non-padded items
-        lstm_outs, _ = self.lstm(batch) # [b x seq x dim]
-        out = torch.stack([lstm_outs[i,idx-1] for i,idx in enumerate(lengths)])
+        lengths = (batch != 0).sum(1)[:, 0]  # lengths of non-padded items
+        lstm_outs, _ = self.lstm(batch)  # [b x seq x dim]
+        out = torch.stack([lstm_outs[i, idx - 1] for i, idx in enumerate(lengths)])
         out = self.W_out(out).squeeze()
         # out = torch.sigmoid(out).squeeze()
 
