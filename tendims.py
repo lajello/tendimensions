@@ -5,9 +5,10 @@ from os.path import join
 import nltk
 import numpy as np
 import torch
-from features.embedding_features import ExtractWordEmbeddings
-from models.lstm import LSTMClassifier
 from nltk.tokenize import TweetTokenizer
+
+from .features.embedding_features import ExtractWordEmbeddings
+from .models.lstm import LSTMClassifier
 
 tokenize = TweetTokenizer().tokenize
 from nltk import sent_tokenize
