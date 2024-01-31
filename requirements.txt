@@ -1,5 +1,5 @@
 numpy
 nltk
 torch
-gensim==3.8.3
+gensim
 scikit-learn
