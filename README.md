@@ -38,7 +38,7 @@ The classifiers use three different embeddings: word2vec, glove, and fasttext. T
 
 1) Word2Vec: the file <code>GoogleNews-vectors-negative300.wv</code> should be placed in the directory <code>embeddings/word2vec</code>. Download it from: https://code.google.com/archive/p/word2vec/
 2) Fasttext: the file <code>wiki-news-300d-1M-subword.wv</code> should be placed in the directory <code>embeddings/fasttext</code>. Download it from: https://fasttext.cc/docs/en/english-vectors.html
-3) GloVe: the file <code>wiki-news-300d-1M-subword.wv</code> should be placed in the directory <code>embeddings/glove</code>. Download it from: https://nlp.stanford.edu/projects/glove/
+3) GloVe: the file <code>glove.42B.300d.wv</code> should be placed in the directory <code>embeddings/glove</code>. Download it from: https://nlp.stanford.edu/projects/glove/
 
 For your convenience, you can dowload all the embeddings at once from http://www.lajello.com/files/tendimensions_embeddings.zip (4GB+). <b>Please refer to the original pages for documentation and acknowledgments.</b>
 

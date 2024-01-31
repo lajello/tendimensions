@@ -1,1 +1,1 @@
-paste in this directory the glove embeddings: wiki-news-300d-1M-subword.wv
+paste in this directory the glove embeddings: glove.42B.300d.wv
