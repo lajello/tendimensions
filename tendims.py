@@ -38,7 +38,7 @@ class TenDimensionsClassifier:
 		self.dim2model = {}
 		self.dim2embedding = {}
         
-        #choose device
+		#choose device
 		self.device = torch.device('cpu')
 		if self.is_cuda:
 			print(f'Torch version: {torch.__version__}')
