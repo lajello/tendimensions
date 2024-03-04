@@ -37,20 +37,29 @@ class TenDimensionsClassifier:
 		#load models
 		self.dim2model = {}
 		self.dim2embedding = {}
+        
+        #choose device
+		self.device = torch.device('cpu')
+		if self.is_cuda:
+			print(f'Torch version: {torch.__version__}')
+			print(f'Torch CUDA available : {torch.cuda.is_available()}')
+			if torch.cuda.is_available():
+				print(f'Torch current device : {torch.cuda.current_device()}')
+				print(f'Torch device count : {torch.cuda.device_count()}')
+				print(f'Torch device name : {torch.cuda.get_device_name(0)}')
+				print('Instantiating the TenDimensionsClassifiers to CUDA.')
+				self.device = torch.device('cuda')
+			elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
+				print(f'Torch MPS available : {torch.backends.mps.is_available()}')
+				print('Instantiating the TenDimensionsClassifiers to MPS.')
+				self.device = torch.device('mps')
+			else:
+				print('Cuda not available. Instantiated the TenDimensionsClassifier with CUDA=False')
+				self.is_cuda = False 
 
 		for dim in self.dimensions_list:
 			model = LSTMClassifier(embedding_dim=300, hidden_dim=300)
-			if self.is_cuda:
-				print(f'Torch version: {torch.__version__}')
-				print(f'Torch CUDA available : {torch.cuda.is_available()}')
-				if torch.cuda.is_available():
-					print(f'Torch current device : {torch.cuda.current_device()}')
-					print(f'Torch device count : {torch.cuda.device_count()}')
-					print(f'Torch device name : {torch.cuda.get_device_name(0)}')
-					model.cuda()
-				else:
-					print('Cuda not available. Instantiated the TenDimensionsClassifier with CUDA=False')
-					self.is_cuda = False 
+			model.to(self.device)
 			model.eval()
 			for modelname in os.listdir(self.models_dir):
 				if ('-best.lstm' in modelname) & (dim in modelname):
@@ -97,7 +106,7 @@ class TenDimensionsClassifier:
 					input_ = em.obtain_vectors_from_sentence(tokenize(text), True)
 					input_ = torch.tensor(input_).float().unsqueeze(0)
 					if self.is_cuda:
-						input_ = input_.cuda()
+						input_ = input_.to(self.device)             
 					output = model(input_)
 					score = torch.sigmoid(output).item()
 					dimension_scores[dim] = score
